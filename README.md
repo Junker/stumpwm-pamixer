@@ -39,9 +39,9 @@ Minimalistic Pulseaudio volume and microphone control module for StumpWM.
 
 ### Parameters
 
-- pamixer:*step* - volume increase/decrease step
-- pamixer:*allow-boost* - allow volume to go above 100%
-- pamixer:*source-allow-boost* - allow source volume to go above 100%
+- pamixer:\*step\* - volume increase/decrease step
+- pamixer:\*allow-boost\* - allow volume to go above 100%
+- pamixer:\*source-allow-boost\* - allow source volume to go above 100%
 
 ### Modeline
 
@@ -49,6 +49,6 @@ Minimalistic Pulseaudio volume and microphone control module for StumpWM.
 
 #### Parameters for modeline
 
-- pamixer:*modeline-fmt* - format of pamixer modeline (default: "%b(%v)")
+- pamixer:\*modeline-fmt\* - format of pamixer modeline (default: "%b(%v)")
   - %b - volume bar
   - %v - volume value
