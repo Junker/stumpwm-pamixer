@@ -8,8 +8,12 @@ Minimalistic Pulseaudio volume and microphone control module for StumpWM.
 
 ## Installation
 
-```lisp
+```bash
+cd ~/.stumpwm.d/modules/
+git clone https://github.com/Junker/stumpwm-pamixer pamixer
+```
 
+```lisp
 (stumpwm:add-to-load-path "~/.stumpwm.d/modules/pamixer")
 (load-module "pamixer")
 ```
