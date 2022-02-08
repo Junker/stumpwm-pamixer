@@ -4,7 +4,7 @@ Minimalistic Pulseaudio volume and microphone control module for StumpWM.
 
 ## Requirements
 
-- [pamixer](https://github.com/cdemoulins/pamixer) installed
+- [pamixer](https://github.com/cdemoulins/pamixer) CLI program installed
 
 ## Installation
 
