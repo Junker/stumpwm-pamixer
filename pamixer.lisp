@@ -102,7 +102,8 @@
       ((:wheel-up)
        (volume-up *step*))
       ((:wheel-down)
-       (volume-down *step*)))))
+       (volume-down *step*))))
+  (stumpwm::update-all-mode-lines))
 
 (register-ml-on-click-id :ml-pamixer-on-click-change-volume
                          #'ml-on-click-change-volume)
