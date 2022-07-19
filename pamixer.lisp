@@ -16,6 +16,8 @@
   '((#\b  ml-bar)
     (#\v  ml-volume)))
 
+(defparameter *mixer-command* "pavucontrol")
+
 (defun run (args &optional (wait-output nil))
   (run-shell-command (concat "pamixer " args) wait-output))
 
@@ -75,6 +77,8 @@
 (defun source-toggle-mute ()
 	(run-source "-t"))
 
+(defun open-mixer ()
+  (run-shell-command *mixer-command*))
 
 (defun ml-bar (volume muted)
   (concat "\["
@@ -99,6 +103,8 @@
     (case button
       ((:left-button)
        (toggle-mute))
+      ((:right-button)
+       (open-mixer))
       ((:wheel-up)
        (volume-up *step*))
       ((:wheel-down)

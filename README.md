@@ -46,6 +46,7 @@ git clone https://github.com/Junker/stumpwm-pamixer pamixer
 - pamixer:\*step\* - volume increase/decrease step
 - pamixer:\*allow-boost\* - allow volume to go above 100%
 - pamixer:\*source-allow-boost\* - allow source volume to go above 100%
+- pamixer:\*mixer-command\* - external mixer program that opens on modeline right click (default: pavucontrol)
 
 ## Modeline
 
@@ -59,6 +60,7 @@ git clone https://github.com/Junker/stumpwm-pamixer pamixer
 
 ### Modeline mouse interaction
 
+- **left button:** mute/unmute
 - **left button:** mute/unmute
 - **wheel up:** volume up
 - **wheel down:** volume down
