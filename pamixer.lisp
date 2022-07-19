@@ -86,9 +86,26 @@
 
 (defun pm-modeline (ml)
   (declare (ignore ml))
-  (format-expand *formatters-alist*
-                 *modeline-fmt*
-                 (get-volume) (get-mute)))
+  (format-with-on-click-id
+   (format-expand *formatters-alist*
+                  *modeline-fmt*
+                  (get-volume) (get-mute))
+   :ml-pamixer-on-click-change-volume nil))
+
+(defun ml-on-click-change-volume (code id &rest rest)
+  (declare (ignore rest))
+  (declare (ignore id))
+  (let ((button (stumpwm::decode-button-code code)))
+    (case button
+      ((:left-button)
+       (toggle-mute))
+      ((:wheel-up)
+       (volume-up *step*))
+      ((:wheel-down)
+       (volume-down *step*)))))
+
+(register-ml-on-click-id :ml-pamixer-on-click-change-volume
+                         #'ml-on-click-change-volume)
 
 (defcommand pamixer-volume-up () ()
   "Increase the volume by N points"

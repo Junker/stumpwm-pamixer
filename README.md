@@ -26,6 +26,12 @@ git clone https://github.com/Junker/stumpwm-pamixer pamixer
   (define-key *top-map* (kbd "XF86AudioMute") "pamixer-toggle-mute")
 ```
 
+**Modeline mouse interaction:**
+
+- left button: Mute/Unmute
+- wheel up: volume up
+- wheel down: volume down
+
 ### Additional commands
 
 - pamixer-mute
