@@ -61,6 +61,6 @@ git clone https://github.com/Junker/stumpwm-pamixer pamixer
 ### Modeline mouse interaction
 
 - **left button:** mute/unmute
-- **left button:** mute/unmute
+- **right button:** open mixer program
 - **wheel up:** volume up
 - **wheel down:** volume down
