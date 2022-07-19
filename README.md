@@ -47,18 +47,18 @@ git clone https://github.com/Junker/stumpwm-pamixer pamixer
 - pamixer:\*allow-boost\* - allow volume to go above 100%
 - pamixer:\*source-allow-boost\* - allow source volume to go above 100%
 
-### Modeline
+## Modeline
 
 %P - pamixer formatter
 
-**Modeline mouse interaction:**
-
-- left button: mute/unmute
-- wheel up: volume up
-- wheel down: volume down
-
-#### Parameters for modeline
+### Parameters for modeline
 
 - pamixer:\*modeline-fmt\* - format of pamixer modeline (default: "%b(%v)")
   - %b - volume bar
   - %v - volume value
+
+### Modeline mouse interaction
+
+- **left button:** mute/unmute
+- **wheel up:** volume up
+- **wheel down:** volume down
