@@ -3,7 +3,7 @@
 (in-package :pamixer)
 
 ;; formatters.
-(add-screen-mode-line-formatter #\P 'pm-modeline)
+(add-screen-mode-line-formatter #\P 'modeline)
 
 (defparameter *step* 5)
 (defparameter *allow-boost* nil)
@@ -88,15 +88,15 @@
 (defun ml-volume (volume muted)
   (if muted "MUT" (format nil "~a\%" volume)))
 
-(defun pm-modeline (ml)
+(defun modeline (ml)
   (declare (ignore ml))
   (format-with-on-click-id
    (format-expand *formatters-alist*
                   *modeline-fmt*
                   (get-volume) (get-mute))
-   :ml-pamixer-on-click-change-volume nil))
+   :ml-pamixer-on-click nil))
 
-(defun ml-on-click-change-volume (code id &rest rest)
+(defun ml-on-click (code id &rest rest)
   (declare (ignore rest))
   (declare (ignore id))
   (let ((button (stumpwm::decode-button-code code)))
@@ -111,8 +111,7 @@
        (volume-down *step*))))
   (stumpwm::update-all-mode-lines))
 
-(register-ml-on-click-id :ml-pamixer-on-click-change-volume
-                         #'ml-on-click-change-volume)
+(register-ml-on-click-id :ml-pamixer-on-click #'ml-on-click)
 
 (defcommand pamixer-volume-up () ()
   "Increase the volume by N points"
