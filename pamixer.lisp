@@ -111,7 +111,9 @@
        (volume-down *step*))))
   (stumpwm::update-all-mode-lines))
 
-(register-ml-on-click-id :ml-pamixer-on-click #'ml-on-click)
+
+(when (fboundp 'stumpwm::register-ml-on-click-id) ;check in case of old stumpwm version
+  (register-ml-on-click-id :ml-pamixer-on-click #'ml-on-click))
 
 (defcommand pamixer-volume-up () ()
   "Increase the volume by N points"
