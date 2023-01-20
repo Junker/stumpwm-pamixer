@@ -4,6 +4,7 @@
 
 ;; formatters.
 (add-screen-mode-line-formatter #\P 'modeline)
+;; (add-screen-mode-line-formatter #\M 'source-modeline)
 
 (defparameter *step* 5)
 (defparameter *allow-boost* nil)
@@ -11,6 +12,9 @@
 
 (defparameter *modeline-fmt* "%b(%v)"
   "The default value for displaying pamixer information on the modeline")
+
+(defparameter *source-modeline-fmt* "%b(%v)"
+  "The default value for displaying pamixer source information on the modeline")
 
 (defparameter *formatters-alist*
   '((#\b  ml-bar)
@@ -88,6 +92,7 @@
 (defun ml-volume (volume muted)
   (if muted "MUT" (format nil "~a\%" volume)))
 
+
 (defun modeline (ml)
   (declare (ignore ml))
   (format-with-on-click-id
@@ -95,6 +100,14 @@
                   *modeline-fmt*
                   (get-volume) (get-mute))
    :ml-pamixer-on-click nil))
+
+(defun source-modeline (ml)
+  (declare (ignore ml))
+  (format-with-on-click-id
+   (format-expand *formatters-alist*
+                  *source-modeline-fmt*
+                  (source-get-volume) (source-get-mute))
+   :ml-pamixer-source-on-click nil))
 
 (defun ml-on-click (code id &rest rest)
   (declare (ignore rest))
@@ -111,9 +124,24 @@
        (volume-down *step*))))
   (stumpwm::update-all-mode-lines))
 
+(defun source-ml-on-click (code id &rest rest)
+  (declare (ignore rest))
+  (declare (ignore id))
+  (let ((button (stumpwm::decode-button-code code)))
+    (case button
+      ((:left-button)
+       (source-toggle-mute))
+      ((:right-button)
+       (open-mixer))
+      ((:wheel-up)
+       (source-volume-up *step*))
+      ((:wheel-down)
+       (source-volume-down *step*))))
+  (stumpwm::update-all-mode-lines))
 
 (when (fboundp 'stumpwm::register-ml-on-click-id) ;check in case of old stumpwm version
-  (register-ml-on-click-id :ml-pamixer-on-click #'ml-on-click))
+  (register-ml-on-click-id :ml-pamixer-on-click #'ml-on-click)
+  (register-ml-on-click-id :ml-pamixer-source-on-click #'source-ml-on-click))
 
 (defcommand pamixer-volume-up () ()
   "Increase the volume by N points"
