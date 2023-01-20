@@ -62,7 +62,7 @@
   (run-source (format nil "--set-volume ~d" value)))
 
 (defun source-get-volume ()
-  (parse-integer (run-source "--get-volume" t)) :junk-allowed t)
+  (parse-integer (run-source "--get-volume" t) :junk-allowed t))
 
 (defun source-get-mute ()
   (let ((muted_str (string-trim '(#\Newline) (run-source "--get-mute" t))))
