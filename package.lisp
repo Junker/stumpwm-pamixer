@@ -10,6 +10,7 @@
            #:mute
            #:unmute
            #:toggle-mute
+           #:modeline
            #:source-volume-up
            #:source-volume-down
            #:source-set-volume
@@ -18,9 +19,11 @@
            #:source-mute
            #:source-unmute
            #:source-toggle-mute
+           #:source-modeline
            #:ml-bar
            #:ml-volume
            #:*step*
            #:*allow-boost*
            #:*source-allow-boost*
-           #:*modeline-fmt*))
+           #:*modeline-fmt*
+           #:*source-modeline-fmt*))
