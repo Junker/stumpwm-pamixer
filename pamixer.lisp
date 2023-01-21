@@ -95,11 +95,12 @@
 
 (defun modeline (ml)
   (declare (ignore ml))
-  (format-with-on-click-id
-   (format-expand *formatters-alist*
-                  *modeline-fmt*
-                  (get-volume) (get-mute))
-   :ml-pamixer-on-click nil))
+  (let ((ml-str (format-expand *formatters-alist*
+                               *modeline-fmt*
+                               (get-volume) (get-mute))))
+    (if (fboundp 'stumpwm::format-with-on-click-id) ;check in case of old stumpwm version
+        (format-with-on-click-id ml-str :ml-pamixer-on-click nil)
+        ml-str)))
 
 (defun source-modeline (ml)
   (declare (ignore ml))
