@@ -108,7 +108,7 @@
                                *source-modeline-fmt*
                                (source-get-volume) (source-get-mute))))
     (if (fboundp 'stumpwm::format-with-on-click-id) ;check in case of old stumpwm version
-        (format-with-on-click-id ml-str :ml-pamixer-on-click nil)
+        (format-with-on-click-id ml-str :ml-pamixer-source-on-click nil)
         ml-str)))
 
 (defun ml-on-click (code id &rest rest)
